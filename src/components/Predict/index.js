@@ -29,7 +29,7 @@ import { CONTRACT_ADDRESS, wallet } from '../../helper/tezos';
 import heroPurple from '../assets/Homepage-bg-purple.png';
 import './index.css';
 
-const BuySellWindow = ({ id, options }) => {
+const BuySellWindow = ({ id, options, flag }) => {
   const [request, setRequest] = React.useState({
     option: options[0],
     quantity: 0,
@@ -41,13 +41,20 @@ const BuySellWindow = ({ id, options }) => {
 
     const contract = await wallet.at(CONTRACT_ADDRESS);
     id = Number(id);
+    
+    if (flag == 1) {
+		  const op1 = await contract.methods.checkStatus(id).send();
+		  await op1.confirmation(1);
+		  alert("Status Changed. Refresh to see latest status");  
+	  } else {
 
-    const op = await contract.methods.voteOnprediction(id, option.value).send({
+      const op = await contract.methods.voteOnprediction(id, option.value).send({
       amount: parseFloat(quantity.value / 100),
     });
 
     await op.confirmation(1);
     alert('Transaction Completed!');
+    }
   };
 
   return (
@@ -180,6 +187,14 @@ export default function Predict() {
 
       let volume = (snapshot.get('Total') / 100).toString();
       console.log('volume :', volume);
+      const currDate = new Date(_.endTime)
+	    const timestamp = currDate.getTime();
+	    const currTime = Date.now(); 
+	    console.log("Time :", currTime , timestamp , _.predictionStatus);
+	    let flag = 0
+	    if ((timestamp < currTime) && ( _.predictionStatus == "Prediction In-Progress")) {
+		      flag = 1
+	      }
 
       setData({
         prediction: _.predictionName,
@@ -192,9 +207,10 @@ export default function Predict() {
         result: _.predictionVoteResult,
         pstatus: _.predictionStatus,
         options: _.predictionOptions,
+        resultRef: _.predicitonResultRef,
         snap: snapshotList,
         Volume: volume,
-
+        flag : flag,
         disclosure:
           "Predictor is for informational and educational purposes only. We take no custody of anyone's money or cryptocurrency. Predictor displays existing markets live on the Tezos blockchain and is a graphical user interface for both visualizing data and market trends from on-chain activity, and interacting with said smart contracts directly via your Web 3 enabled wallet.",
       });
@@ -247,7 +263,7 @@ export default function Predict() {
           </Flex>
 
           <Flex w={{ base: '100%', md: '30%', lg: '30%' }}>
-            <Text fontSize="lg">Reference: </Text>
+            <Text fontSize="lg">Reference: {data.resultRef} </Text>
           </Flex>
 
           <Flex
@@ -322,7 +338,7 @@ export default function Predict() {
           flexDirection="row"
           flexWrap="wrap"
         >
-          <BuySellWindow id={id} options={data.options} />
+          <BuySellWindow id={id} options={data.options} flag={data.flag} />
         </Box>
       </Box>
     </Container>
