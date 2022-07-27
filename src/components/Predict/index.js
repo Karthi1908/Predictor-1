@@ -263,7 +263,7 @@ export default function Predict() {
           </Flex>
 
           <Flex w={{ base: '100%', md: '30%', lg: '30%' }}>
-            <Text fontSize="lg">Reference: {data.resultRef} </Text>
+            <Text fontSize="sm">Reference: <u> <a href={data.resultRef} target="_blank"> {data.resultRef}  </a> </u>  </Text>
           </Flex>
 
           <Flex
