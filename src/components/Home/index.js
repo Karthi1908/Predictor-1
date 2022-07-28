@@ -440,6 +440,14 @@ export default function Home() {
                             {pred.value.predictionStatus}
                           </Center>
                         </Box>
+                       <Box w="30%">
+                          <Center
+                            color={'#6EFB57'}
+                            fontSize={{ base: 'xs', md: 'md', lg: 'md' }}
+                          >
+                            {pred.value.predictionVoteResult}
+                          </Center>
+                        </Box>
                       </Box>
                     </Box>
                   );
