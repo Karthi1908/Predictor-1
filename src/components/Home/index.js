@@ -440,7 +440,7 @@ export default function Home() {
                             {pred.value.predictionStatus}
                           </Center>
                         </Box>
-                       <Box w="30%">
+                       <Box w="20%">
                           <Center
                             color={'#6EFB57'}
                             fontSize={{ base: 'xs', md: 'md', lg: 'md' }}
