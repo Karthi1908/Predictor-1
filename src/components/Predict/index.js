@@ -306,23 +306,23 @@ export default function Predict() {
 
         <Flex flexDirection="column" padding="5" w="100%">
           <Box className="mid" py="5">
-            <Text fontSize="lg">Volume :</Text>
+            <Text fontSize="lg">Volume:</Text>
 
             <Flex>
               <Flex>
-                <Text color="white">Total :</Text>
-                <Text color="white">{data.Volume} Tez</Text>
+                <Text color="white">Total:</Text>
+                <Text color="white">{data.Volume}Tez</Text>
               </Flex>
 
               {data.snap.map((pred, i) => {
                 return (
                   <Flex flexDirection="row" px="7">
                     <Box display="flex">
-                      <Text>{pred.id} : </Text>
+                      <Text>{pred.id}: </Text>
                     </Box>
 
                     <Box display="flex">
-                      <Text>{pred.value} %</Text>
+                      <Text>{pred.value}%</Text>
                     </Box>
                   </Flex>
                 );
