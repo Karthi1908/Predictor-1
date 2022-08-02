@@ -126,7 +126,7 @@ export default function Header({ links = [] }) {
       .send();
 
     await op1.confirmation(1);
-    alert('Proposer Whitelisted!');
+    alert('Proposer queued for Approval. Approvals usually take 12 hours. For faster approvals post your wallet in telegram');
   };
 
   return (
