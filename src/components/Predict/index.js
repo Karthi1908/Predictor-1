@@ -113,7 +113,7 @@ const BuySellWindow = ({ id, options, flag }) => {
               </Box>
               <Box>
                 <Text fontWeight="bold" fontSize="lg">
-                  Amount of shares
+                  Amount of shares (1 Tez can buy 100 shares)
                 </Text>
                 <NumberInput
                   isRequired
