@@ -13,3 +13,45 @@
   outline: none !important;
   box-shadow: none !important;
 }
+
+.options {
+  border: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: 30px !important;
+}
+
+form {
+  border: none !important;
+}
+
+.ReactModal__Overlay {
+  background-color: transparent !important;
+}
+.ReactModal__Content--after-open {
+  width: 30% !important;
+  margin-left: 35%;
+  margin-top: 17%;
+  background-color: #180f2b !important;
+  border-radius: 15px;
+}
+
+@media (max-width: 500px) {
+  .ReactModal__Content--after-open {
+    width: 75% !important;
+    margin-left: 13% !important;
+    margin-top: 50%;
+    /* background-color: green !important; */
+    border-radius: 15px;
+  }
+}
+
+.close-btn {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.close-btn:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
