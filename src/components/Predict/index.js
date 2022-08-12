@@ -323,7 +323,7 @@ export default function Predict() {
             >
               <Flex>
                 <Text color="white">Total:</Text>
-                <Text color="white">{data.Volume}Tez</Text>
+                <Text color="white">&nbsp; {data.Volume}Tez</Text>
               </Flex>
 
               {data.snap.map((pred, i) => {
@@ -337,7 +337,7 @@ export default function Predict() {
                     </Box>
 
                     <Box display="flex">
-                      <Text>{pred.value}%</Text>
+                      <Text>&nbsp; {pred.value}%</Text>
                     </Box>
                   </Flex>
                 );
